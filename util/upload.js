@@ -46,7 +46,7 @@ function set(ref, val) {
     ref.set(val, done);
 } 
 // ====
-
+/*
 Facts.forEach(function(factData) {
     var fact = new Fact(factData);
     var key = getFbKey(fact);
@@ -56,7 +56,7 @@ Facts.forEach(function(factData) {
         console.log("key:" + key);
     }
 });
-
+*/
 // Combine all lands into one object. JSONify the axioms and goals for fast
 // parsing and efficient firebase storage.
 var lands = {};
