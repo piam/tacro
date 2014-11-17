@@ -4,29 +4,67 @@
   <head>
     <title>testMove.js</title>
 
-    <script src="script/move.min.js" type="text/javascript"></script>
+
     <style>
     
     div {
       width:50px;
       height:50px;  
-      background-color: red; 
+      background-color: #FF0001; 
+      margin-left: 0;
+      display: inline-block;
     }
     </style>
-
-    <script>
-    function moveIt() {
-      move('#example-1 .box')
-      .set('margin-left', 200)
-      .end();
-    }
-    </script>
-
-
   </head>
 
   <body>
     <button onclick="moveIt()">Click me</button>
 
-    <div><img /></div>
-  </body></html>
+    <div id="example-1" ></div>
+
+    
+
+
+
+    <script src="script/move.js" type="text/javascript"></script>
+    <script>
+
+    //Why can't this be init. outside a function?
+  var changeColor = move('#example-1').set('background-color', 'black');
+
+    //element must in form #example-1
+    function blink(element) {
+      x = document.getElementById("example-1");
+      y = x.style();
+      color = y.background-color;
+      color = color.toString(16);
+      alert(color);
+
+      var newColor = parseInt(color, 16) + 000001;
+      newColor = newColor.toString(16);
+
+       move('#example-1').set('background-color', 'white').delay('.1s').end().then().set('background-color', '#'+color).pop().end();
+    }
+
+    function moveIt() {
+      move('#example-1')
+      .set('background-color', 'white')
+      .delay('1s')
+      .end()
+      .set('background-color', '#FF0000')
+//      .then(changeColor)
+      .end()
+      .then()      
+        .set('margin-left', '200px')
+        .pop() 
+      .end();
+
+      blink('#example-1')
+    }
+    </script>
+
+
+  </body>
+
+
+  </html>
